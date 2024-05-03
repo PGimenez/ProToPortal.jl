@@ -115,11 +115,11 @@ function ui()
                 )),
             page_container(class = "mx-8",
                 [
-                    Html.div(class = "", @iif("selected_page == 'chat'"), tab_chat()),
-                    Html.div(class = "", @iif("selected_page == 'history'"), tab_history()),
+                    Html.div(class = "w-4/5 ml-auto mr-auto", @iif("selected_page == 'chat'"), tab_chat()),
+                    Html.div(class = "w-4/5 ml-auto mr-auto", @iif("selected_page == 'history'"), tab_history()),
                     Html.div(
-                        class = "", @iif("selected_page == 'templates'"), tab_templates()),
-                    Html.div(class = "", @iif("selected_page == 'config'"), tab_config())]),
+                        class = "w-4/5 ml-auto mr-auto", @iif("selected_page == 'templates'"), tab_templates()),
+                    Html.div(class = "w-4/5 ml-auto mr-auto", @iif("selected_page == 'config'"), tab_config())]),
                     
                     quasar(:footer,reveal=true,bordered=false,class="bg-white text-primary text-caption text-center",
                     [
