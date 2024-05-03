@@ -1,19 +1,6 @@
 ## Blocks of the CHAT tab
 function tab_chat_settings()
     htmldiv([
-        expansionitem(
-        label = "Advanced settings",
-        dense = true,
-        densetoggle = true,
-        expandseparator = true,
-        headerstyle = "bg-blue-1", [
-            p("Conversation Flow", class = "text-lg text-weight-bold "),
-            btngroup(class = "py-4",
-                [
-                    btn("Delete last message",
-                        icon = "delete", @click(:chat_rm_last_msg)),
-                    btn("New Chat", icon = "refresh", @click(:chat_reset))]),
-            separator(),
             p("Generation Settings", class = "text-lg text-weight-bold pt-4"),
             p("Temperature (0=conservative, 2=crazy)"),
             slider(
@@ -55,7 +42,6 @@ function tab_chat_settings()
                 textfield("Or use Auto-Reply Message",
                     hint = "A text that will be auto-sent to the AI model", :chat_auto_reply, class = "col-12"))
         ])
-    ])
 end
 
 function tab_chat_templates()
@@ -132,14 +118,14 @@ function tab_chat_input()
                 ## change to multi-line text area
                 @on("keyup.enter.ctrl",
                     "chat_submit = !chat_submit")),
-            cell(class = "flex",
+            row(
                 [
-                    btn("Submit", @click(:chat_submit), disable = :chat_submit),
-                    spinner(
-                        color = "primary",
-                        size = "3em", @iif(:chat_submit)),
-                    btn("New Chat", @click(:chat_reset))
-                ])
+                    btn("Submit", @click(:chat_submit), disable = :chat_submit, color="black"),
+                    spinner( color = "primary", size = "3em", @iif(:chat_submit)),
+                    btn("Delete last message",
+                        icon = "delete", @click(:chat_rm_last_msg), color="black"),
+                    btn("New Chat", icon = "refresh", @click(:chat_reset), color="black")]),
+            separator(),
         ])
 end
 
